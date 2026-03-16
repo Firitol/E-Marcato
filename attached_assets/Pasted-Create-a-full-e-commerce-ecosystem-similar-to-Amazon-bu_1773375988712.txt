@@ -1,0 +1,406 @@
+Create a full e-commerce ecosystem similar to Amazon but optimized for emerging markets such as Ethiopia.
+
+Use a modern cloud-native architecture with containerization, scalable APIs, and AI features.
+
+TECHNOLOGY STACK
+
+Backend
+
+Python
+
+Django
+
+Django REST Framework
+
+FastAPI (for high performance services)
+
+GraphQL gateway
+
+Microservices architecture
+
+Frontend
+
+React.js
+
+Next.js
+
+Tailwind CSS
+
+TypeScript
+
+Mobile Apps
+
+React Native
+
+Databases
+
+PostgreSQL (transactional data)
+
+MongoDB (catalog and product data)
+
+Redis (cache and sessions)
+
+Elasticsearch (search engine)
+
+Infrastructure
+
+Docker
+
+Kubernetes
+
+Nginx
+
+API Gateway
+
+Load Balancer
+
+CDN
+
+Object storage for product images
+
+Messaging / Event Streaming
+
+Apache Kafka
+
+Async Processing
+
+Celery
+
+Redis
+
+Real-time communication
+
+WebSockets
+
+Django Channels
+
+Machine Learning / AI
+
+Python ML services
+
+Recommendation engine
+
+Fraud detection
+
+Demand prediction
+
+Smart search ranking
+
+SYSTEM ARCHITECTURE
+
+Design a distributed system composed of independent microservices.
+
+Create the following services:
+
+User Service
+
+authentication
+
+authorization
+
+profiles
+
+roles
+
+Seller Service
+
+seller onboarding
+
+store management
+
+seller analytics
+
+Product Catalog Service
+
+product listings
+
+categories
+
+variants
+
+bulk pricing
+
+Inventory Service
+
+stock tracking
+
+warehouse management
+
+restock alerts
+
+Search Service
+
+product indexing
+
+filters
+
+ranking
+
+autocomplete
+
+Shopping Cart Service
+
+cart sessions
+
+cart persistence
+
+Order Service
+
+order processing
+
+order status
+
+order history
+
+Payment Service
+Integrate stubs for Ethiopian payment providers:
+
+Telebirr
+
+CBE Birr
+
+cash on delivery
+
+Recommendation Engine
+
+collaborative filtering
+
+product similarity
+
+personalized recommendations
+
+trending products
+
+Delivery & Logistics Service
+
+shipment tracking
+
+driver routing
+
+delivery status
+
+real-time GPS updates
+
+Notification Service
+
+email notifications
+
+SMS
+
+push notifications
+
+Messaging Service
+
+buyer ↔ seller live chat
+
+support chat
+
+typing indicators
+
+Review & Rating Service
+
+product reviews
+
+seller ratings
+
+verified purchase badges
+
+Analytics Service
+
+revenue analytics
+
+user behavior tracking
+
+product performance
+
+seller performance dashboards
+
+Fraud Detection Service
+
+suspicious transactions
+
+abnormal behavior detection
+
+Affiliate & Promotion Service
+
+coupon system
+
+referral system
+
+marketing campaigns
+
+ADMIN PLATFORM
+
+Create a powerful admin dashboard including:
+
+user management
+
+seller approval
+
+product moderation
+
+dispute resolution
+
+fraud monitoring
+
+financial reports
+
+logistics monitoring
+
+AI FEATURES
+
+Implement the following intelligent systems:
+
+Personalized recommendation engine
+
+Trending products detection
+
+Search ranking optimization
+
+Demand prediction for inventory
+
+Fraud detection model
+
+Smart delivery route optimization
+
+FRONTEND FEATURES
+
+Customer marketplace:
+
+homepage
+
+category pages
+
+product pages
+
+advanced search
+
+filters
+
+wishlist
+
+shopping cart
+
+checkout
+
+delivery tracking
+
+order history
+
+review system
+
+Seller portal:
+
+seller dashboard
+
+inventory management
+
+product management
+
+sales analytics
+
+order fulfillment
+
+messaging with buyers
+
+Admin dashboard:
+
+full system monitoring
+
+analytics graphs
+
+seller approval workflow
+
+logistics dashboard
+
+INFRASTRUCTURE REQUIREMENTS
+
+Design the platform for horizontal scaling.
+
+Include:
+
+containerized microservices
+
+Kubernetes orchestration
+
+auto scaling
+
+distributed caching
+
+CDN for images
+
+API gateway
+
+rate limiting
+
+service discovery
+
+DEVOPS
+
+Generate:
+
+Dockerfiles
+
+docker-compose setup
+
+Kubernetes manifests
+
+CI/CD pipeline
+
+environment configuration
+
+PROJECT STRUCTURE
+
+Generate a professional enterprise repository:
+
+/amazon_clone_platform
+/services
+/user_service
+/seller_service
+/catalog_service
+/inventory_service
+/order_service
+/payment_service
+/recommendation_service
+/delivery_service
+/notification_service
+/analytics_service
+/fraud_service
+
+/gateway
+/frontend
+/mobile_app
+/infrastructure
+    /docker
+    /kubernetes
+    /terraform
+
+OUTPUT REQUIREMENTS
+
+Generate:
+
+Full architecture diagram
+
+Service communication flow
+
+Database schemas
+
+Microservice APIs
+
+Backend code for each service
+
+Frontend marketplace UI
+
+Seller dashboard UI
+
+Admin dashboard UI
+
+AI recommendation service
+
+Docker + Kubernetes setup
+
+Deployment instructions
+
+Documentation for developers
+
+Ensure the platform is production-ready, scalable, secure, and capable of supporting millions of users.

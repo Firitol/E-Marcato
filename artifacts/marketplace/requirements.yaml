@@ -1,0 +1,25 @@
+packages:
+  "framer-motion": "For page transitions, subtle entry animations, and interactive component feedback"
+  "recharts": "For beautiful analytics charts in the seller and admin dashboards"
+  "@hookform/resolvers": "For Zod form validation integration"
+  "date-fns": "For elegant date formatting in orders, reviews, and notifications"
+  "lucide-react": "For comprehensive and consistent iconography across the app"
+
+images:
+  - path: "artifacts/marketplace/public/images/hero-bg.png"
+    description: "Vibrant abstract pattern inspired by Ethiopian cultural textiles, using warm oranges, golds, and deep reds. Modern geometric shapes suitable for a premium e-commerce hero background. High contrast, soft lighting."
+    aspect_ratio: "16:9"
+  - path: "artifacts/marketplace/public/images/logo.png"
+    description: "Modern e-commerce logo for 'EthioMart'. Clean, bold typography with a subtle shopping bag or cart icon incorporated. Colors: vibrant orange-red and dark slate. Transparent background."
+    aspect_ratio: "3:4"
+  - path: "artifacts/marketplace/public/images/telebirr.png"
+    description: "A digital payment icon for 'Telebirr', utilizing bright blue and green colors in a clean, modern, flat vector style. Transparent background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/marketplace/public/images/cbe-birr.png"
+    description: "A digital payment icon for 'CBE Birr', utilizing deep purple and yellow colors in a clean, modern, flat vector style. Transparent background."
+    aspect_ratio: "1:1"
+
+notes:
+  - Using pre-generated Orval React Query hooks from @workspace/api-client-react
+  - Forms validate against local Zod schemas that mirror the API types
+  - Mocked authentication state using useGetCurrentUser fallback logic
