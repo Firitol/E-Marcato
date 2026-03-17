@@ -144,7 +144,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {data?.featured?.slice(0, 5).map(product => (
+              {data?.featured?.slice(0, 5).map((product: any) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
@@ -189,7 +189,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {data?.trending?.slice(0, 5).map(product => (
+              {data?.trending?.slice(0, 5).map((product: any) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
