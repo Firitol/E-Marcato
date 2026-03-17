@@ -12,5 +12,10 @@
     {
       "path": "./lib/api-zod"
     }
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/scripts"       // exclude hello.ts and other scripts
   ]
 }
