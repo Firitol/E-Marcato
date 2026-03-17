@@ -48,7 +48,7 @@ router.get("/homepage", optionalAuth, async (_req, res) => {
 
 router.get("/similar/:productId", async (req, res) => {
   try {
-    const productId = parseInt(req.params.productId);
+    const productId = Number.parseInt(String(req.params.productId), 10);
     const [product] = await db.select().from(productsTable).where(eq(productsTable.id, productId)).limit(1);
     if (!product) {
       res.status(404).json({ error: "Not Found" });

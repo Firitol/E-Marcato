@@ -42,7 +42,7 @@ router.post("/", requireAuth, async (req, res) => {
 router.delete("/:productId", requireAuth, async (req, res) => {
   try {
     const userId = (req as any).userId;
-    const productId = parseInt(req.params.productId);
+    const productId = Number.parseInt(String(req.params.productId), 10);
     await db.delete(wishlistTable).where(and(eq(wishlistTable.userId, userId), eq(wishlistTable.productId, productId)));
     res.json({ success: true, message: "Removed from wishlist" });
   } catch (err) {
