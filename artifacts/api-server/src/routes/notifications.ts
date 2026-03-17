@@ -21,7 +21,7 @@ router.get("/", requireAuth, async (req, res) => {
 
 router.put("/:id/read", requireAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     await db.update(notificationsTable).set({ read: true }).where(eq(notificationsTable.id, id));
     res.json({ success: true, message: "Marked as read" });
   } catch (err) {

@@ -122,7 +122,7 @@ router.get("/sellers", ...requireAdmin, async (req, res) => {
 
 router.put("/sellers/:id/approve", ...requireAdmin, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const { status, reason } = req.body;
     const [seller] = await db.update(sellersTable)
       .set({ status, rejectionReason: reason, updatedAt: new Date() })
@@ -177,7 +177,7 @@ router.get("/products/pending", ...requireAdmin, async (req, res) => {
 
 router.put("/products/:id/approve", ...requireAdmin, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const { status } = req.body;
     const [product] = await db.update(productsTable).set({ status, updatedAt: new Date() })
       .where(eq(productsTable.id, id)).returning();
