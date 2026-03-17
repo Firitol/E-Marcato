@@ -2,6 +2,29 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 const BASE = "/api";
 
+export type RecommendationProduct = {
+  id: number;
+  name: string;
+  price: number | string;
+  images?: string[];
+  rating?: number;
+  reviewCount?: number;
+  stock?: number;
+  categoryName?: string;
+  category?: { name?: string };
+  originalPrice?: number | string;
+  discount?: number;
+};
+
+export type HomeRecommendationsResponse = {
+  featured: RecommendationProduct[];
+  trending: RecommendationProduct[];
+  forYou: RecommendationProduct[];
+  deals: RecommendationProduct[];
+  newArrivals: RecommendationProduct[];
+};
+
+
 async function fetchJSON(path: string, options?: RequestInit) {
   const token = localStorage.getItem("auth_token");
   const res = await fetch(`${BASE}${path}`, {
@@ -59,7 +82,10 @@ export function useOrder(id: number | null) {
 }
 
 export function useRecommendations() {
-  return useQuery({ queryKey: ["recommendations"], queryFn: () => api.get("/recommendations/homepage") });
+  return useQuery<HomeRecommendationsResponse>({
+    queryKey: ["recommendations"],
+    queryFn: () => api.get("/recommendations/homepage"),
+  });
 }
 
 export function useWishlist() {

@@ -104,7 +104,7 @@ router.post("/", requireAuth, async (req, res) => {
 
 router.get("/:id", optionalAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const [product] = await db.select().from(productsTable).where(eq(productsTable.id, id)).limit(1);
     if (!product) {
       res.status(404).json({ error: "Not Found" });
@@ -137,7 +137,7 @@ router.get("/:id", optionalAuth, async (req, res) => {
 
 router.put("/:id", requireAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const userId = (req as any).userId;
     const [seller] = await db.select().from(sellersTable).where(eq(sellersTable.userId, userId)).limit(1);
 
@@ -164,7 +164,7 @@ router.put("/:id", requireAuth, async (req, res) => {
 
 router.delete("/:id", requireAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     await db.update(productsTable).set({ status: "inactive" }).where(eq(productsTable.id, id));
     res.json({ success: true, message: "Product deleted" });
   } catch (err) {
@@ -176,7 +176,7 @@ router.delete("/:id", requireAuth, async (req, res) => {
 router.get("/:id/reviews", async (req, res) => {
   try {
     const { reviewsTable } = await import("@workspace/db");
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
     const offset = (page - 1) * limit;

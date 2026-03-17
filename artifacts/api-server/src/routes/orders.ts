@@ -111,7 +111,7 @@ router.post("/", requireAuth, async (req, res) => {
 
 router.get("/:id", requireAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const [order] = await db.select().from(ordersTable).where(eq(ordersTable.id, id)).limit(1);
     if (!order) {
       res.status(404).json({ error: "Not Found" });
@@ -126,7 +126,7 @@ router.get("/:id", requireAuth, async (req, res) => {
 
 router.put("/:id/status", requireAuth, async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number.parseInt(String(req.params.id), 10);
     const { status, trackingNumber, note } = req.body;
     const [order] = await db.update(ordersTable)
       .set({ status, trackingNumber, notes: note, updatedAt: new Date() })

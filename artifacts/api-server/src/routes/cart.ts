@@ -84,7 +84,7 @@ router.post("/", requireAuth, async (req, res) => {
 router.put("/:productId", requireAuth, async (req, res) => {
   try {
     const userId = (req as any).userId;
-    const productId = parseInt(req.params.productId);
+    const productId = Number.parseInt(String(req.params.productId), 10);
     const { quantity } = req.body;
 
     if (quantity <= 0) {
@@ -105,7 +105,7 @@ router.put("/:productId", requireAuth, async (req, res) => {
 router.delete("/:productId", requireAuth, async (req, res) => {
   try {
     const userId = (req as any).userId;
-    const productId = parseInt(req.params.productId);
+    const productId = Number.parseInt(String(req.params.productId), 10);
     await db.delete(cartItemsTable).where(and(eq(cartItemsTable.userId, userId), eq(cartItemsTable.productId, productId)));
     res.json(await getCartWithProducts(userId));
   } catch (err) {
