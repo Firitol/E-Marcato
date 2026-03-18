@@ -57,9 +57,8 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
+    headers: {
+      "Cache-Control": "no-store",
     },
   },
   preview: {
