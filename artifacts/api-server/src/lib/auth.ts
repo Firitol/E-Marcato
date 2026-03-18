@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import crypto from "crypto";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(32).toString("hex");
+const JWT_EXPIRY = "7d";
 
 export function hashPassword(password: string): string {
   return crypto.createHash("sha256").update(password + "ethiomart_salt").digest("hex");
@@ -9,32 +13,22 @@ export function comparePassword(password: string, hash: string): boolean {
   return hashPassword(password) === hash;
 }
 
-export function generateToken(): string {
-  return crypto.randomBytes(32).toString("hex");
-}
-
-// Simple in-memory session store (fine for demo; use Redis in production)
-const sessions = new Map<string, { userId: number; role: string; expiresAt: Date }>();
-
 export function createSession(userId: number, role: string): string {
-  const token = generateToken();
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-  sessions.set(token, { userId, role, expiresAt });
-  return token;
+  return jwt.sign({ userId, role }, JWT_SECRET, { expiresIn: JWT_EXPIRY });
 }
 
 export function getSession(token: string): { userId: number; role: string } | null {
-  const session = sessions.get(token);
-  if (!session) return null;
-  if (session.expiresAt < new Date()) {
-    sessions.delete(token);
+  try {
+    const payload = jwt.verify(token, JWT_SECRET) as { userId: number; role: string };
+    return { userId: payload.userId, role: payload.role };
+  } catch {
     return null;
   }
-  return { userId: session.userId, role: session.role };
 }
 
-export function deleteSession(token: string): void {
-  sessions.delete(token);
+export function deleteSession(_token: string): void {
+  // JWT tokens are stateless — no server-side invalidation needed.
+  // In production, maintain a short-lived blocklist or use short expiry tokens.
 }
 
 export function getTokenFromRequest(req: Request): string | null {
