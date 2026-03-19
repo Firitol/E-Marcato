@@ -97,4 +97,3 @@ build = ["bash", "-c", "pnpm install && pnpm --filter @workspace/marketplace run
 
 [userenv.shared]
 JWT_SECRET = "32bc342e098e73086941da73c2c0d6ae92a3bfe7cd8c9e8382c7027a397a303c"
-GITHUB_TOKEN = "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"
