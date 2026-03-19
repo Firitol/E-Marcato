@@ -21,6 +21,10 @@ args = "Start Backend"
 task = "workflow.run"
 args = "Start application"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Push to GitHub"
+
 [[workflows.workflow]]
 name = "Start Backend"
 author = "agent"
@@ -44,6 +48,17 @@ outputType = "webview"
 task = "shell.exec"
 args = "bash -c 'PORT=8080 pnpm --filter @workspace/api-server run dev & PORT=5000 pnpm --filter @workspace/marketplace run dev'"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Push to GitHub"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "GIT_AUTHOR_NAME='Replit Agent' GIT_AUTHOR_EMAIL='agent@replit.com' GIT_COMMITTER_NAME='Replit Agent' GIT_COMMITTER_EMAIL='agent@replit.com' git push https://Firitol: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@github.com/Firitol/E-Marcato.git main && echo 'PUSH COMPLETE'"
 
 [[ports]]
 localPort = 5000
@@ -75,8 +90,8 @@ externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["bash", "-c", "PORT=5000 node artifacts/api-server/dist/index.js"]
-build = ["bash", "-c", "pnpm install && pnpm --filter @workspace/db run push-force && PORT=5000 BASE_PATH=/ pnpm --filter @workspace/marketplace run build && pnpm --filter @workspace/api-server run build"]
+run = ["bash", "-c", "pnpm --filter @workspace/db run push-force && PORT=8080 node artifacts/api-server/dist/index.js"]
+build = ["bash", "-c", "pnpm install && pnpm --filter @workspace/marketplace run build && pnpm --filter @workspace/api-server run build"]
 
 [userenv]
 
