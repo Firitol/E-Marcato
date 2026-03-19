@@ -58,7 +58,7 @@ outputType = "console"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "GIT_AUTHOR_NAME='Replit Agent' GIT_AUTHOR_EMAIL='agent@replit.com' GIT_COMMITTER_NAME='Replit Agent' GIT_COMMITTER_EMAIL='agent@replit.com' git push https://Firitol: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@github.com/Firitol/E-Marcato.git main && echo 'PUSH COMPLETE'"
+args = "git push https://Firitol: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@github.com/Firitol/E-Marcato.git main && echo 'PUSH COMPLETE'"
 
 [[ports]]
 localPort = 5000
