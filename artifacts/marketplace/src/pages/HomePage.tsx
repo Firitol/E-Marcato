@@ -1,4 +1,7 @@
+console.log("[v0] HomePage.tsx module loaded");
+
 export default function HomePage() {
+  console.log("[v0] HomePage component rendering");
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#fff" }}>
       <header style={{ backgroundColor: "#f5f5f5", padding: "20px", borderBottom: "1px solid #e0e0e0" }}>
