@@ -1,177 +1,150 @@
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Truck, ShieldCheck, Zap, TrendingUp, MapPin } from "lucide-react";
-
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold text-blue-600">EthioMart</div>
-          <div className="flex gap-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/search">Search</Link>
-            </Button>
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/cart">Cart</Link>
-            </Button>
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/login">Login</Link>
-            </Button>
-          </div>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#fff" }}>
+      <header style={{ backgroundColor: "#f5f5f5", padding: "20px", borderBottom: "1px solid #e0e0e0" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#0066cc" }}>EthioMart</h1>
+          <nav style={{ display: "flex", gap: "20px" }}>
+            <a href="/search" style={{ textDecoration: "none", color: "#333" }}>Search</a>
+            <a href="/cart" style={{ textDecoration: "none", color: "#333" }}>Cart</a>
+            <a href="/login" style={{ textDecoration: "none", color: "#333" }}>Login</a>
+          </nav>
         </div>
       </header>
-      
-      <main className="flex-1">
+
+      <main style={{ flex: 1 }}>
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h1 className="text-5xl font-bold mb-6">Ethiopia's Premium Marketplace</h1>
-            <p className="text-xl mb-8 text-blue-100">
+        <section style={{ background: "linear-gradient(135deg, #0066cc 0%, #004fa3 100%)", color: "white", padding: "60px 20px", textAlign: "center" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <h2 style={{ fontSize: "48px", fontWeight: "bold", marginBottom: "20px" }}>Ethiopia's Premium Marketplace</h2>
+            <p style={{ fontSize: "18px", marginBottom: "30px", color: "#e8f0ff" }}>
               Shop millions of authentic products from local and global brands. Fast delivery to your doorstep.
             </p>
-            <div className="flex gap-4 flex-wrap">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" asChild>
-                <Link href="/search">Shop Now</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20" asChild>
-                <Link href="/search">Browse Products</Link>
-              </Button>
+            <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="/search" style={{ padding: "12px 30px", backgroundColor: "white", color: "#0066cc", textDecoration: "none", borderRadius: "4px", fontWeight: "bold" }}>
+                Shop Now
+              </a>
+              <a href="/search" style={{ padding: "12px 30px", backgroundColor: "transparent", color: "white", border: "2px solid white", textDecoration: "none", borderRadius: "4px", fontWeight: "bold" }}>
+                Browse Products
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Features Bar */}
-        <section className="bg-gray-50 py-8 border-b">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="flex gap-4">
-                <Truck className="w-8 h-8 text-blue-600 shrink-0" />
-                <div>
-                  <h4 className="font-bold">Fast Delivery</h4>
-                  <p className="text-sm text-gray-600">Across all regions</p>
-                </div>
+        {/* Features */}
+        <section style={{ backgroundColor: "#f5f5f5", padding: "40px 20px" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "30px" }}>
+            <div style={{ display: "flex", gap: "15px" }}>
+              <div style={{ fontSize: "32px" }}>🚚</div>
+              <div>
+                <h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Fast Delivery</h4>
+                <p style={{ color: "#666", fontSize: "14px" }}>Across all regions</p>
               </div>
-              <div className="flex gap-4">
-                <ShieldCheck className="w-8 h-8 text-green-600 shrink-0" />
-                <div>
-                  <h4 className="font-bold">Secure Payment</h4>
-                  <p className="text-sm text-gray-600">Telebirr & CBE Birr</p>
-                </div>
+            </div>
+            <div style={{ display: "flex", gap: "15px" }}>
+              <div style={{ fontSize: "32px" }}>✅</div>
+              <div>
+                <h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Secure Payment</h4>
+                <p style={{ color: "#666", fontSize: "14px" }}>Telebirr & CBE Birr</p>
               </div>
-              <div className="flex gap-4">
-                <Zap className="w-8 h-8 text-yellow-600 shrink-0" />
-                <div>
-                  <h4 className="font-bold">Daily Deals</h4>
-                  <p className="text-sm text-gray-600">Save up to 50%</p>
-                </div>
+            </div>
+            <div style={{ display: "flex", gap: "15px" }}>
+              <div style={{ fontSize: "32px" }}>⚡</div>
+              <div>
+                <h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Daily Deals</h4>
+                <p style={{ color: "#666", fontSize: "14px" }}>Save up to 50%</p>
               </div>
-              <div className="flex gap-4">
-                <TrendingUp className="w-8 h-8 text-purple-600 shrink-0" />
-                <div>
-                  <h4 className="font-bold">Top Brands</h4>
-                  <p className="text-sm text-gray-600">100% Authentic</p>
-                </div>
+            </div>
+            <div style={{ display: "flex", gap: "15px" }}>
+              <div style={{ fontSize: "32px" }}>📈</div>
+              <div>
+                <h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Top Brands</h4>
+                <p style={{ color: "#666", fontSize: "14px" }}>100% Authentic</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Categories Section */}
-        <section className="py-16 container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4">Shop by Category</h2>
-          <p className="text-gray-600 mb-12">Browse our most popular categories</p>
+        {/* Categories */}
+        <section style={{ padding: "60px 20px", maxWidth: "1200px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "15px" }}>Shop by Category</h2>
+          <p style={{ color: "#666", marginBottom: "40px" }}>Browse our most popular categories</p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[
-              { name: "Electronics", slug: "electronics" },
-              { name: "Fashion", slug: "fashion" },
-              { name: "Home & Garden", slug: "home-garden" },
-              { name: "Beauty", slug: "beauty" },
-              { name: "Sports", slug: "sports" },
-              { name: "Books", slug: "books" },
-              { name: "Toys", slug: "toys" },
-              { name: "Food & Drinks", slug: "food" },
-            ].map((category) => (
-              <div 
-                key={category.slug}
-                className="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mx-auto mb-4"></div>
-                <h3 className="font-semibold text-gray-900">{category.name}</h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "20px" }}>
+            {["Electronics", "Fashion", "Home & Garden", "Beauty", "Sports", "Books", "Toys", "Food & Drinks"].map((cat) => (
+              <div key={cat} style={{ border: "1px solid #ddd", borderRadius: "8px", padding: "24px", textAlign: "center", cursor: "pointer", transition: "box-shadow 0.3s" }}>
+                <div style={{ width: "64px", height: "64px", background: "linear-gradient(135deg, #80b0ff 0%, #0066cc 100%)", borderRadius: "8px", margin: "0 auto 16px" }}></div>
+                <h3 style={{ fontWeight: "600" }}>{cat}</h3>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Promotional Banner */}
-        <section className="bg-blue-600 text-white py-12 my-12">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Weekend Flash Sale</h2>
-            <p className="text-blue-100 mb-8">Get up to 60% off on selected items. Limited time only!</p>
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" asChild>
-              <Link href="/search">View Deals</Link>
-            </Button>
-          </div>
+        {/* Promo Banner */}
+        <section style={{ backgroundColor: "#0066cc", color: "white", padding: "48px 20px", textAlign: "center", margin: "40px 0" }}>
+          <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "15px" }}>Weekend Flash Sale</h2>
+          <p style={{ marginBottom: "25px", color: "#e8f0ff" }}>Get up to 60% off on selected items. Limited time only!</p>
+          <a href="/search" style={{ padding: "12px 30px", backgroundColor: "white", color: "#0066cc", textDecoration: "none", borderRadius: "4px", fontWeight: "bold", display: "inline-block" }}>
+            View Deals
+          </a>
         </section>
 
-        {/* Why Shop With Us */}
-        <section className="py-16 container mx-auto px-4 bg-gray-50 rounded-lg">
-          <h2 className="text-4xl font-bold mb-12 text-center">Why Shop With Us?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
-              <h3 className="font-bold text-lg mb-2">Local Expertise</h3>
-              <p className="text-gray-600">We understand the Ethiopian market and serve our community with pride.</p>
+        {/* Why Shop */}
+        <section style={{ padding: "60px 20px", maxWidth: "1200px", margin: "0 auto", backgroundColor: "#f5f5f5", borderRadius: "8px" }}>
+          <h2 style={{ fontSize: "36px", fontWeight: "bold", textAlign: "center", marginBottom: "50px" }}>Why Shop With Us?</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "40px" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ width: "48px", height: "48px", backgroundColor: "#0066cc", color: "white", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: "24px", fontWeight: "bold" }}>✓</div>
+              <h3 style={{ fontWeight: "bold", fontSize: "18px", marginBottom: "10px" }}>Local Expertise</h3>
+              <p style={{ color: "#666" }}>We understand the Ethiopian market and serve our community with pride.</p>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
-              <h3 className="font-bold text-lg mb-2">Trusted Sellers</h3>
-              <p className="text-gray-600">All sellers are verified and reviewed. Shop with confidence.</p>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ width: "48px", height: "48px", backgroundColor: "#00994d", color: "white", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: "24px", fontWeight: "bold" }}>✓</div>
+              <h3 style={{ fontWeight: "bold", fontSize: "18px", marginBottom: "10px" }}>Trusted Sellers</h3>
+              <p style={{ color: "#666" }}>All sellers are verified and reviewed. Shop with confidence.</p>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
-              <h3 className="font-bold text-lg mb-2">Best Prices</h3>
-              <p className="text-gray-600">Price match guarantee. Find the best deals on quality products.</p>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ width: "48px", height: "48px", backgroundColor: "#663399", color: "white", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: "24px", fontWeight: "bold" }}>✓</div>
+              <h3 style={{ fontWeight: "bold", fontSize: "18px", marginBottom: "10px" }}>Best Prices</h3>
+              <p style={{ color: "#666" }}>Price match guarantee. Find the best deals on quality products.</p>
             </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <footer style={{ backgroundColor: "#1a1a1a", color: "white", padding: "48px 20px", marginTop: "60px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "32px", marginBottom: "32px" }}>
             <div>
-              <h4 className="font-bold text-lg mb-4">EthioMart</h4>
-              <p className="text-gray-400">Your trusted marketplace for quality products and exceptional service.</p>
+              <h4 style={{ fontWeight: "bold", fontSize: "18px", marginBottom: "16px" }}>EthioMart</h4>
+              <p style={{ color: "#999" }}>Your trusted marketplace for quality products and exceptional service.</p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/search">Shop</Link></li>
-                <li><Link href="/become-seller">Become a Seller</Link></li>
-                <li><Link href="/">Contact Us</Link></li>
+              <h4 style={{ fontWeight: "bold", marginBottom: "16px" }}>Quick Links</h4>
+              <ul style={{ listStyle: "none", padding: 0, color: "#999" }}>
+                <li style={{ marginBottom: "8px" }}><a href="/search" style={{ color: "#999", textDecoration: "none" }}>Shop</a></li>
+                <li style={{ marginBottom: "8px" }}><a href="/become-seller" style={{ color: "#999", textDecoration: "none" }}>Become a Seller</a></li>
+                <li><a href="/" style={{ color: "#999", textDecoration: "none" }}>Contact Us</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Customer Service</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/">Help Center</Link></li>
-                <li><Link href="/">Shipping Info</Link></li>
-                <li><Link href="/">Returns</Link></li>
+              <h4 style={{ fontWeight: "bold", marginBottom: "16px" }}>Customer Service</h4>
+              <ul style={{ listStyle: "none", padding: 0, color: "#999" }}>
+                <li style={{ marginBottom: "8px" }}><a href="/" style={{ color: "#999", textDecoration: "none" }}>Help Center</a></li>
+                <li style={{ marginBottom: "8px" }}><a href="/" style={{ color: "#999", textDecoration: "none" }}>Shipping Info</a></li>
+                <li><a href="/" style={{ color: "#999", textDecoration: "none" }}>Returns</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/">Privacy Policy</Link></li>
-                <li><Link href="/">Terms & Conditions</Link></li>
+              <h4 style={{ fontWeight: "bold", marginBottom: "16px" }}>Legal</h4>
+              <ul style={{ listStyle: "none", padding: 0, color: "#999" }}>
+                <li style={{ marginBottom: "8px" }}><a href="/" style={{ color: "#999", textDecoration: "none" }}>Privacy Policy</a></li>
+                <li><a href="/" style={{ color: "#999", textDecoration: "none" }}>Terms & Conditions</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <div style={{ borderTop: "1px solid #333", paddingTop: "32px", textAlign: "center", color: "#999" }}>
             <p>&copy; 2024 EthioMart. All rights reserved.</p>
           </div>
         </div>
