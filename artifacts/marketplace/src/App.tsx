@@ -1,4 +1,4 @@
-import HomePage from "@/pages/HomePage";
+import HomePage from "./pages/HomePage";
 
 console.log("[v0] App.tsx module loaded");
 
