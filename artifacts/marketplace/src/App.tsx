@@ -1,8 +1,18 @@
-import HomePage from "./pages/HomePage";
-
-console.log("[v0] App.tsx module loaded");
-
 export default function App() {
-  console.log("[v0] App component rendering");
-  return <HomePage />;
+  return (
+    <div style={{
+      width: '100%',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#f0f0f0',
+      fontFamily: 'sans-serif'
+    }}>
+      <div style={{ textAlign: 'center' }}>
+        <h1 style={{ fontSize: '48px', color: '#333', marginBottom: '20px' }}>E-Marcato</h1>
+        <p style={{ fontSize: '20px', color: '#666' }}>Ethiopian Marketplace</p>
+      </div>
+    </div>
+  );
 }
