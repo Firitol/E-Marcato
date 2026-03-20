@@ -1,6 +1,4 @@
 import React, { ReactNode } from "react";
-import { AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface Props {
   children: ReactNode;
@@ -28,28 +26,27 @@ export class ErrorBoundary extends React.Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-background p-4">
-          <div className="max-w-md w-full">
-            <div className="bg-card border border-border rounded-lg p-8 text-center">
-              <AlertCircle className="h-12 w-12 text-destructive mx-auto mb-4" />
-              <h1 className="text-2xl font-bold text-foreground mb-2">Something went wrong</h1>
-              <p className="text-muted-foreground mb-6">
+        <div style={{ minHeight: "100vh", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#f5f5f5", padding: "20px" }}>
+          <div style={{ maxWidth: "400px", width: "100%" }}>
+            <div style={{ backgroundColor: "white", border: "1px solid #e0e0e0", borderRadius: "8px", padding: "32px", textAlign: "center" }}>
+              <div style={{ fontSize: "48px", marginBottom: "16px" }}>⚠️</div>
+              <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#333", marginBottom: "8px" }}>Something went wrong</h1>
+              <p style={{ color: "#666", marginBottom: "24px", fontSize: "14px" }}>
                 {this.state.error?.message || "An unexpected error occurred. Please try refreshing the page."}
               </p>
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  className="flex-1"
-                  onClick={() => window.location.href = "/"}
+              <div style={{ display: "flex", gap: "12px" }}>
+                <a 
+                  href="/"
+                  style={{ flex: 1, padding: "10px 16px", backgroundColor: "#f5f5f5", color: "#333", textDecoration: "none", borderRadius: "4px", border: "1px solid #ddd", fontWeight: "500", cursor: "pointer", textAlign: "center" }}
                 >
                   Go Home
-                </Button>
-                <Button
-                  className="flex-1"
+                </a>
+                <button 
                   onClick={() => window.location.reload()}
+                  style={{ flex: 1, padding: "10px 16px", backgroundColor: "#0066cc", color: "white", border: "none", borderRadius: "4px", fontWeight: "500", cursor: "pointer" }}
                 >
                   Refresh
-                </Button>
+                </button>
               </div>
             </div>
           </div>
