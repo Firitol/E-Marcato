@@ -10,7 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
-  const { data, isLoading } = useRecommendations();
+  const { data, isLoading, error } = useRecommendations();
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -142,6 +142,13 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+          ) : error ? (
+            <div className="bg-muted/50 border border-border rounded-2xl p-8 text-center">
+              <p className="text-muted-foreground mb-4">Unable to load featured products at the moment.</p>
+              <Button variant="outline" size="sm" asChild>
+                <Link href="/search">Browse Products</Link>
+              </Button>
+            </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {data?.featured?.slice(0, 5).map((product: any) => (
@@ -186,6 +193,13 @@ export default function HomePage() {
                {[...Array(5)].map((_, i) => (
                 <Skeleton key={i} className="w-full aspect-[3/4] rounded-2xl" />
               ))}
+            </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground mb-4">Trending products unavailable right now.</p>
+              <Button variant="outline" size="sm" asChild>
+                <Link href="/search">Browse All</Link>
+              </Button>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">

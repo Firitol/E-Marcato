@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd artifacts/marketplace && pnpm install && pnpm build",
+  "outputDirectory": "artifacts/marketplace/dist",
+  "framework": "vite",
+  "installCommand": "pnpm install"
+}
