@@ -85,6 +85,7 @@ export function useRecommendations() {
   return useQuery<HomeRecommendationsResponse>({
     queryKey: ["recommendations"],
     queryFn: () => api.get("/recommendations/homepage"),
+    retry: false,
   });
 }
 

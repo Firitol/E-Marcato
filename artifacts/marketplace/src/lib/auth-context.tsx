@@ -31,10 +31,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const savedToken = localStorage.getItem("auth_token");
     if (savedToken) {
       setToken(savedToken);
+      
+      // Add a timeout to prevent hanging if API is unavailable
+      const timeoutId = setTimeout(() => {
+        setIsLoading(false);
+        localStorage.removeItem("auth_token");
+        setToken(null);
+      }, 3000);
+      
       api.get("/auth/me")
-        .then(u => setUser(u))
-        .catch(() => { localStorage.removeItem("auth_token"); setToken(null); })
-        .finally(() => setIsLoading(false));
+        .then(u => {
+          clearTimeout(timeoutId);
+          setUser(u);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          clearTimeout(timeoutId);
+          localStorage.removeItem("auth_token");
+          setToken(null);
+          setIsLoading(false);
+        });
     } else {
       setIsLoading(false);
     }
