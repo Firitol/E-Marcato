@@ -1,17 +1,14 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Zap, ShieldCheck, Truck, TrendingUp } from "lucide-react";
+import { Truck, ShieldCheck, Zap, TrendingUp, MapPin } from "lucide-react";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Simple Header */}
+      {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/">
-            <a className="text-2xl font-bold text-primary">EthioMart</a>
-          </Link>
+          <div className="text-2xl font-bold text-blue-600">EthioMart</div>
           <div className="flex gap-4">
             <Button variant="ghost" size="sm" asChild>
               <Link href="/search">Search</Link>
@@ -81,93 +78,96 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured Categories */}
+        {/* Categories Section */}
         <section className="py-16 container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Featured Categories</h2>
-          <p className="text-gray-600 mb-12">Browse our most popular product categories</p>
+          <h2 className="text-4xl font-bold mb-4">Shop by Category</h2>
+          <p className="text-gray-600 mb-12">Browse our most popular categories</p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {["Electronics", "Fashion", "Home & Garden", "Books", "Sports", "Beauty", "Toys", "Groceries"].map((category) => (
-              <Link key={category} href={`/search?category=${category.toLowerCase()}`}>
-                <a className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:shadow-lg transition-shadow">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl">📦</span>
-                  </div>
-                  <h3 className="font-bold">{category}</h3>
-                </a>
-              </Link>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Electronics", slug: "electronics" },
+              { name: "Fashion", slug: "fashion" },
+              { name: "Home & Garden", slug: "home-garden" },
+              { name: "Beauty", slug: "beauty" },
+              { name: "Sports", slug: "sports" },
+              { name: "Books", slug: "books" },
+              { name: "Toys", slug: "toys" },
+              { name: "Food & Drinks", slug: "food" },
+            ].map((category) => (
+              <div 
+                key={category.slug}
+                className="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mx-auto mb-4"></div>
+                <h3 className="font-semibold text-gray-900">{category.name}</h3>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Promo Banner */}
-        <section className="py-16 container mx-auto px-4">
-          <div className="bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-2xl p-12">
-            <Badge className="bg-white/20 text-white border-white/30 mb-4">Holiday Special</Badge>
-            <h2 className="text-4xl font-bold mb-4">Big Saving Days Are Here!</h2>
-            <p className="text-lg mb-6 max-w-2xl">Get extra 20% off on all electronics when you pay with CBE Birr. Limited time offer.</p>
-            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
-              Shop Electronics
+        {/* Promotional Banner */}
+        <section className="bg-blue-600 text-white py-12 my-12">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">Weekend Flash Sale</h2>
+            <p className="text-blue-100 mb-8">Get up to 60% off on selected items. Limited time only!</p>
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" asChild>
+              <Link href="/search">View Deals</Link>
             </Button>
           </div>
         </section>
 
         {/* Why Shop With Us */}
-        <section className="py-16 container mx-auto px-4 bg-gray-50 -mx-4 px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Why Shop With EthioMart?</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-lg">
-              <div className="text-4xl mb-4">🚚</div>
-              <h3 className="font-bold text-lg mb-2">Fast & Reliable</h3>
-              <p className="text-gray-600">Quick delivery to all regions of Ethiopia with tracking</p>
+        <section className="py-16 container mx-auto px-4 bg-gray-50 rounded-lg">
+          <h2 className="text-4xl font-bold mb-12 text-center">Why Shop With Us?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
+              <h3 className="font-bold text-lg mb-2">Local Expertise</h3>
+              <p className="text-gray-600">We understand the Ethiopian market and serve our community with pride.</p>
             </div>
-            <div className="bg-white p-8 rounded-lg">
-              <div className="text-4xl mb-4">🛡️</div>
-              <h3 className="font-bold text-lg mb-2">Secure Transactions</h3>
-              <p className="text-gray-600">Your payments and personal data are fully protected</p>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
+              <h3 className="font-bold text-lg mb-2">Trusted Sellers</h3>
+              <p className="text-gray-600">All sellers are verified and reviewed. Shop with confidence.</p>
             </div>
-            <div className="bg-white p-8 rounded-lg">
-              <div className="text-4xl mb-4">⭐</div>
-              <h3 className="font-bold text-lg mb-2">Quality Assured</h3>
-              <p className="text-gray-600">All products are verified and 100% authentic</p>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">✓</div>
+              <h3 className="font-bold text-lg mb-2">Best Prices</h3>
+              <p className="text-gray-600">Price match guarantee. Find the best deals on quality products.</p>
             </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
+      <footer className="bg-gray-900 text-white py-12 mt-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="font-bold mb-4">About EthioMart</h4>
+              <h4 className="font-bold text-lg mb-4">EthioMart</h4>
+              <p className="text-gray-400">Your trusted marketplace for quality products and exceptional service.</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/"><a>Home</a></Link></li>
-                <li><Link href="/search"><a>Shop</a></Link></li>
-                <li><Link href="/about"><a>About</a></Link></li>
+                <li><Link href="/search">Shop</Link></li>
+                <li><Link href="/become-seller">Become a Seller</Link></li>
+                <li><Link href="/">Contact Us</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Customer Service</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/contact"><a>Contact Us</a></Link></li>
-                <li><Link href="/faq"><a>FAQs</a></Link></li>
-                <li><Link href="/returns"><a>Returns</a></Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">For Sellers</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/become-seller"><a>Become a Seller</a></Link></li>
-                <li><Link href="/seller"><a>Seller Dashboard</a></Link></li>
+                <li><Link href="/">Help Center</Link></li>
+                <li><Link href="/">Shipping Info</Link></li>
+                <li><Link href="/">Returns</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Legal</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/terms"><a>Terms</a></Link></li>
-                <li><Link href="/privacy"><a>Privacy</a></Link></li>
+                <li><Link href="/">Privacy Policy</Link></li>
+                <li><Link href="/">Terms & Conditions</Link></li>
               </ul>
             </div>
           </div>
