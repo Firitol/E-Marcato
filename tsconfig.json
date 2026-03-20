@@ -3,13 +3,14 @@
   "compilerOptions": {
     "outDir": "dist",         
     "rootDir": "src",          
-    "module": "CommonJS" 
+    "module": "esnext"
   },
   "include": ["src"],          
   "exclude": [
     "node_modules",
     "dist",
-    "src/scripts"             
+    "src/scripts",
+    "artifacts"
   ],
   "references": [
     { "path": "./lib/db" },
