@@ -1,218 +1,181 @@
 import { Link } from "wouter";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useRecommendations, useCategories } from "@/lib/api";
-import { ArrowRight, Zap, TrendingUp, ShieldCheck, Truck } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { motion } from "framer-motion";
+import { ArrowRight, Zap, ShieldCheck, Truck, TrendingUp } from "lucide-react";
 
 export default function HomePage() {
-  const { data, isLoading, error } = useRecommendations();
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
+      {/* Simple Header */}
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/">
+            <a className="text-2xl font-bold text-primary">EthioMart</a>
+          </Link>
+          <div className="flex gap-4">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/search">Search</Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/cart">Cart</Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+          </div>
+        </div>
+      </header>
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
-          {/* Background image with overlay wash */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
-              alt="EthioMart Marketplace" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10 flex flex-col items-start max-w-4xl ml-4 md:ml-auto">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground border border-primary/30 backdrop-blur-md text-sm font-semibold mb-6 shadow-lg shadow-black/10"
-            >
-              New Arrivals Daily
-            </motion.span>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-tight mb-6"
-            >
-              Ethiopia's <span className="text-secondary">Premium</span> <br/>
-              Marketplace
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg leading-relaxed"
-            >
+        <section className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h1 className="text-5xl font-bold mb-6">Ethiopia's Premium Marketplace</h1>
+            <p className="text-xl mb-8 text-blue-100">
               Shop millions of authentic products from local and global brands. Fast delivery to your doorstep.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl shadow-primary/30" asChild>
+            </p>
+            <div className="flex gap-4 flex-wrap">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" asChild>
                 <Link href="/search">Shop Now</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold bg-white/10 text-white border-white/20 hover:bg-white/20 backdrop-blur-md" asChild>
-                <Link href="/categories">Browse Categories</Link>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20" asChild>
+                <Link href="/search">Browse Products</Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Features Bar */}
-        <section className="bg-card border-b border-border shadow-sm relative z-20">
-          <div className="container mx-auto px-4 py-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-x divide-border/50">
-              <div className="flex items-center gap-4 pl-0 md:pl-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Truck className="w-6 h-6" />
-                </div>
+        <section className="bg-gray-50 py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="flex gap-4">
+                <Truck className="w-8 h-8 text-blue-600 shrink-0" />
                 <div>
-                  <h4 className="font-bold text-sm">Fast Delivery</h4>
-                  <p className="text-xs text-muted-foreground">Across all regions</p>
+                  <h4 className="font-bold">Fast Delivery</h4>
+                  <p className="text-sm text-gray-600">Across all regions</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 pl-4 md:pl-8">
-                <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
+              <div className="flex gap-4">
+                <ShieldCheck className="w-8 h-8 text-green-600 shrink-0" />
                 <div>
-                  <h4 className="font-bold text-sm">Secure Payment</h4>
-                  <p className="text-xs text-muted-foreground">Telebirr & CBE Birr</p>
+                  <h4 className="font-bold">Secure Payment</h4>
+                  <p className="text-sm text-gray-600">Telebirr & CBE Birr</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 pl-4 md:pl-8">
-                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent shrink-0">
-                  <Zap className="w-6 h-6" />
-                </div>
+              <div className="flex gap-4">
+                <Zap className="w-8 h-8 text-yellow-600 shrink-0" />
                 <div>
-                  <h4 className="font-bold text-sm">Daily Deals</h4>
-                  <p className="text-xs text-muted-foreground">Save up to 50%</p>
+                  <h4 className="font-bold">Daily Deals</h4>
+                  <p className="text-sm text-gray-600">Save up to 50%</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 pl-4 md:pl-8">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 shrink-0">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
+              <div className="flex gap-4">
+                <TrendingUp className="w-8 h-8 text-purple-600 shrink-0" />
                 <div>
-                  <h4 className="font-bold text-sm">Top Brands</h4>
-                  <p className="text-xs text-muted-foreground">100% Authentic</p>
+                  <h4 className="font-bold">Top Brands</h4>
+                  <p className="text-sm text-gray-600">100% Authentic</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Products */}
+        {/* Featured Categories */}
         <section className="py-16 container mx-auto px-4">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-display font-bold text-foreground">Featured Products</h2>
-              <p className="text-muted-foreground mt-2">Handpicked quality items just for you</p>
-            </div>
-            <Button variant="ghost" className="hidden sm:flex group" asChild>
-              <Link href="/search?sort=popular">
-                View All <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <h2 className="text-3xl font-bold mb-4">Featured Categories</h2>
+          <p className="text-gray-600 mb-12">Browse our most popular product categories</p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {["Electronics", "Fashion", "Home & Garden", "Books", "Sports", "Beauty", "Toys", "Groceries"].map((category) => (
+              <Link key={category} href={`/search?category=${category.toLowerCase()}`}>
+                <a className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span className="text-2xl">📦</span>
+                  </div>
+                  <h3 className="font-bold">{category}</h3>
+                </a>
               </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Promo Banner */}
+        <section className="py-16 container mx-auto px-4">
+          <div className="bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-2xl p-12">
+            <Badge className="bg-white/20 text-white border-white/30 mb-4">Holiday Special</Badge>
+            <h2 className="text-4xl font-bold mb-4">Big Saving Days Are Here!</h2>
+            <p className="text-lg mb-6 max-w-2xl">Get extra 20% off on all electronics when you pay with CBE Birr. Limited time offer.</p>
+            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
+              Shop Electronics
             </Button>
           </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="flex flex-col gap-3">
-                  <Skeleton className="w-full aspect-square rounded-2xl" />
-                  <Skeleton className="h-4 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                  <Skeleton className="h-8 w-1/3 mt-2" />
-                </div>
-              ))}
-            </div>
-          ) : error ? (
-            <div className="bg-muted/50 border border-border rounded-2xl p-8 text-center">
-              <p className="text-muted-foreground mb-4">Unable to load featured products at the moment.</p>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/search">Browse Products</Link>
-              </Button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {data?.featured?.slice(0, 5).map((product: any) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
         </section>
 
-        {/* Promotional Banner */}
-        <section className="py-8 container mx-auto px-4">
-          <div className="w-full rounded-3xl overflow-hidden bg-gradient-to-r from-accent to-emerald-700 text-white relative flex flex-col md:flex-row items-center p-8 md:p-12 shadow-2xl">
-            <div className="relative z-10 flex-1 md:pr-8">
-              <Badge className="bg-white/20 text-white border-white/30 hover:bg-white/30 mb-4 backdrop-blur-sm font-bold no-default-active-elevate">Holiday Special</Badge>
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 leading-tight">Big Saving Days Are Here!</h2>
-              <p className="text-emerald-50 text-lg mb-8 max-w-xl">Get extra 20% off on all electronics when you pay with CBE Birr. Limited time offer.</p>
-              <Button size="lg" className="bg-white text-accent hover:bg-gray-100 font-bold rounded-full px-8 shadow-lg">
-                Shop Electronics
-              </Button>
+        {/* Why Shop With Us */}
+        <section className="py-16 container mx-auto px-4 bg-gray-50 -mx-4 px-8">
+          <h2 className="text-3xl font-bold mb-12 text-center">Why Shop With EthioMart?</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-lg">
+              <div className="text-4xl mb-4">🚚</div>
+              <h3 className="font-bold text-lg mb-2">Fast & Reliable</h3>
+              <p className="text-gray-600">Quick delivery to all regions of Ethiopia with tracking</p>
             </div>
-            <div className="mt-8 md:mt-0 relative z-10 w-full md:w-1/3 flex justify-center">
-              {/* ecommerce electronics gadgets unsplash */}
-              <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=80" alt="Electronics Promo" className="rounded-2xl shadow-2xl rotate-[-5deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/10" />
+            <div className="bg-white p-8 rounded-lg">
+              <div className="text-4xl mb-4">🛡️</div>
+              <h3 className="font-bold text-lg mb-2">Secure Transactions</h3>
+              <p className="text-gray-600">Your payments and personal data are fully protected</p>
             </div>
-            {/* Decorative background circles */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
+            <div className="bg-white p-8 rounded-lg">
+              <div className="text-4xl mb-4">⭐</div>
+              <h3 className="font-bold text-lg mb-2">Quality Assured</h3>
+              <p className="text-gray-600">All products are verified and 100% authentic</p>
+            </div>
           </div>
         </section>
-
-        {/* Trending */}
-        <section className="py-16 container mx-auto px-4 bg-muted/30 rounded-3xl my-8 border border-border/50">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-display font-bold text-foreground">Trending Now</h2>
-              <p className="text-muted-foreground mt-2">What everyone is buying</p>
-            </div>
-          </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-               {[...Array(5)].map((_, i) => (
-                <Skeleton key={i} className="w-full aspect-[3/4] rounded-2xl" />
-              ))}
-            </div>
-          ) : error ? (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground mb-4">Trending products unavailable right now.</p>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/search">Browse All</Link>
-              </Button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {data?.trending?.slice(0, 5).map((product: any) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
-        </section>
-        
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 mt-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="font-bold mb-4">About EthioMart</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/"><a>Home</a></Link></li>
+                <li><Link href="/search"><a>Shop</a></Link></li>
+                <li><Link href="/about"><a>About</a></Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Customer Service</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/contact"><a>Contact Us</a></Link></li>
+                <li><Link href="/faq"><a>FAQs</a></Link></li>
+                <li><Link href="/returns"><a>Returns</a></Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">For Sellers</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/become-seller"><a>Become a Seller</a></Link></li>
+                <li><Link href="/seller"><a>Seller Dashboard</a></Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Legal</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/terms"><a>Terms</a></Link></li>
+                <li><Link href="/privacy"><a>Privacy</a></Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 EthioMart. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
