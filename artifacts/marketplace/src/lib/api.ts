@@ -69,7 +69,12 @@ export function useSearch(q: string, params?: Record<string, any>) {
 }
 
 export function useCart() {
-  return useQuery({ queryKey: ["cart"], queryFn: () => api.get("/cart"), retry: false });
+  return useQuery({ 
+    queryKey: ["cart"], 
+    queryFn: () => api.get("/cart"),
+    retry: false,
+    enabled: true,
+  });
 }
 
 export function useOrders(params?: Record<string, any>) {

@@ -37,7 +37,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setIsLoading(false);
         localStorage.removeItem("auth_token");
         setToken(null);
-      }, 3000);
+      }, 2000); // 2 second timeout for faster page load
       
       api.get("/auth/me")
         .then(u => {

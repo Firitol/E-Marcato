@@ -20,7 +20,7 @@ export function Navbar() {
   const [, setLocation] = useLocation();
   const { user, logout, isLoading: isUserLoading } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
-  const { data: cart } = useCart();
+  const { data: cart, error: cartError } = useCart();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ export function Navbar() {
     }
   };
 
-  const cartItemsCount = cart?.items?.length || cart?.itemCount || 0;
+  const cartItemsCount = !cartError && cart ? (cart?.items?.length || cart?.itemCount || 0) : 0;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-sm">
